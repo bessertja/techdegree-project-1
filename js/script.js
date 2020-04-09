@@ -51,7 +51,15 @@ let quotes = [
  * `getRandomQuote` function
 ***/
 
+function getRandomQuote( array ) {
+    let randNum = Math.floor( Math.random() * array.length );
+    let randQuote = array[randNum];
+    //For testing console.log(randNum);
+    //For testing console.log(randQuote);
+    return randQuote;
+}
 
+getRandomQuote(quotes);
 
 /***
  * `printQuote` function
