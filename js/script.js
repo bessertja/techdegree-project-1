@@ -46,6 +46,7 @@ let quotes = [
       tag: "wealth"
   },
 ];
+//**Testing above coding** console.log(quotes);
 
 /***
  * `getRandomQuote` function
@@ -54,8 +55,8 @@ let quotes = [
 function getRandomQuote( array ) {
     let randNum = Math.floor( Math.random() * array.length );
     let randQuote = array[randNum];
-    //For testing console.log(randNum);
-    //For testing console.log(randQuote);
+    //**For testing** console.log(randNum);
+    //**For testing** console.log(randQuote);
     return randQuote;
 }
 
@@ -63,6 +64,30 @@ getRandomQuote(quotes);
 
 /***
  * `printQuote` function
+***/
+
+function printQuote () {
+    let randQuote = getRandomQuote(quotes);
+    let quoteHTML = ''; 
+    quoteHTML += `<p class="quote">${randQuote.quote}</p>
+    <p class="source">${randQuote.source}`;
+    //**For testing** console.log(quoteHTML);
+    //**For testing** console.log(sourceHTML);
+    if ( randQuote.citation ) {
+        quoteHTML += `<span class="citation">${randQuote.citation}</span>`;
+    } 
+    if ( randQuote.year ) {
+        quoteHTML += `<span class="year">${randQuote.year}</span>`;
+    }
+    if ( randQuote.tag ) {
+        quoteHTML += `<span class="tag"> ${randQuote.tag}</span>`;
+    }
+    quoteHTML += `</p>`;
+    return document.getElementById('quote-box').innerHTML = quoteHTML;
+}
+
+/***
+ * `changeBkgdColor` function
 ***/
 
 
