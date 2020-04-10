@@ -86,18 +86,38 @@ function printQuote () {
 }
 
 /***
- * `changeBkgdColor` function
+ * `changeBkgdColor` functions
 ***/
+
+// Function generates a random number between 0 and 256
+function getRandomColor() {
+    let color = Math.floor( Math.random() * 256 );
+    return color;
+}
+
+// Function generates a color code <div> tag
+function changeBkgdColor() {
+    let colorHTML = '<style>';
+    let red = getRandomColor();
+    let blue = getRandomColor();
+    let green = getRandomColor();
+    colorHTML += `body{background-color: rgb(${red},${green},${blue});</style>`;
+    return colorHTML;
+}
+
+// document.head.innerHTML += changeBkgdColor();
+
 
 /***
  *  `refreshPage` function
  ***/
 // This function refreshes the page ever 15 seconds with a new quote
- function refreshPage() {
+function refreshPage() {
     window.setInterval(printQuote, 15000);
 }
 
 refreshPage();
+document.head.innerHTML += changeBkgdColor();
 
 
 /***
