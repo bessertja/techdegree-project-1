@@ -65,13 +65,14 @@ getRandomQuote(quotes);
  * `printQuote` function
 ***/
 
-// Function callss the random number generator function and prints a quote and source to the web page.
+// Function calls the `getRandomQuote` function and returns a quote and source to the web page.
 function printQuote () {
     let randQuote = getRandomQuote(quotes);
     let quoteHTML = ''; 
     quoteHTML += `<p class="quote">${randQuote.quote}</p>
     <p class="source">${randQuote.source}`;
-    // Conditionals check if additional properties are present. If so, they are printed to the web page.
+    
+    // Conditionals check if additional object properties are present. If so, they are added to the variable.
     if ( randQuote.citation ) {
         quoteHTML += `<span class="citation">${randQuote.citation}</span>`;
     } 
@@ -82,6 +83,11 @@ function printQuote () {
         quoteHTML += `<span class="tag"><br>${randQuote.tag}</span>`;
     }
     quoteHTML += `</p>`;
+    
+    // This line calls the `changeBkgdColor` function and changes the background color each time a new quote is displayed
+    document.head.innerHTML += changeBkgdColor();
+
+    // Line returns a new quote
     return document.getElementById('quote-box').innerHTML = quoteHTML;
 }
 
@@ -95,7 +101,7 @@ function getRandomColor() {
     return color;
 }
 
-// Function generates a color code <div> tag
+// Function generates a color code <style> tag
 function changeBkgdColor() {
     let colorHTML = '<style>';
     let red = getRandomColor();
@@ -104,8 +110,6 @@ function changeBkgdColor() {
     colorHTML += `body{background-color: rgb(${red},${green},${blue});</style>`;
     return colorHTML;
 }
-
-// document.head.innerHTML += changeBkgdColor();
 
 
 /***
@@ -117,7 +121,7 @@ function refreshPage() {
 }
 
 refreshPage();
-document.head.innerHTML += changeBkgdColor();
+
 
 
 /***
