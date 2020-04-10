@@ -1,17 +1,11 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
+/**************************************
+ * Treehouse FSJS Techdegree Project 1
+ * Random Quote Generator
+ **************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
-
-// This array contains multiple quote objects
+/**
+ * An array holding 5 quote objects each some with different number of properties
+ **/
 let quotes = [
   {
       quote: "Change is. Growth is optional.",
@@ -48,11 +42,9 @@ let quotes = [
   },
 ];
 
-/***
- * `getRandomQuote` function
-***/
-
-// Function generates and returns a random number based on the length of the `quotes` array
+/** 
+ * Functions generates a random number based on length of `quotes` array
+ */
 function getRandomQuote( array ) {
     let randNum = Math.floor( Math.random() * array.length );
     let randQuote = array[randNum];
@@ -64,8 +56,9 @@ getRandomQuote(quotes);
 /***
  * `printQuote` function
 ***/
-
-// Function calls the `getRandomQuote` function and returns a quote and source to the web page.
+/**
+ * Function calls `getRandomQuote`, creates HTML string and returns it
+ */
 function printQuote () {
     let randQuote = getRandomQuote(quotes);
     let quoteHTML = ''; 
@@ -91,17 +84,17 @@ function printQuote () {
     return document.getElementById('quote-box').innerHTML = quoteHTML;
 }
 
-/***
- * `changeBkgdColor` functions
-***/
+/**
+ * Function generates a random number between 0 and 256
+ */
 
-// Function generates a random number between 0 and 256
 function getRandomColor() {
     let color = Math.floor( Math.random() * 256 );
     return color;
 }
-
-// Function generates a color code <style> tag
+/**
+ * Function generates and returns a <style> tag with CSS `background-color` element
+ */
 function changeBkgdColor() {
     let colorHTML = '<style>';
     let red = getRandomColor();
@@ -111,11 +104,9 @@ function changeBkgdColor() {
     return colorHTML;
 }
 
-
-/***
- *  `refreshPage` function
- ***/
-// This function refreshes the page ever 15 seconds with a new quote
+/**
+ * Function refreshes page every 15 seconds with a new quote
+ */
 function refreshPage() {
     window.setInterval(printQuote, 15000);
 }
