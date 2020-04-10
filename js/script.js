@@ -114,7 +114,7 @@ function refreshPage() {
 refreshPage();
 
 
-
+// Following code provided by Treehouse
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
