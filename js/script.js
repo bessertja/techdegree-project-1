@@ -11,6 +11,7 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 
+// This array contains multiple quote objects
 let quotes = [
   {
       quote: "Change is. Growth is optional.",
@@ -46,17 +47,15 @@ let quotes = [
       tag: "wealth"
   },
 ];
-//**Testing above coding** console.log(quotes);
 
 /***
  * `getRandomQuote` function
 ***/
 
+// Function generates and returns a random number based on the length of the `quotes` array
 function getRandomQuote( array ) {
     let randNum = Math.floor( Math.random() * array.length );
     let randQuote = array[randNum];
-    //**For testing** console.log(randNum);
-    //**For testing** console.log(randQuote);
     return randQuote;
 }
 
@@ -66,13 +65,13 @@ getRandomQuote(quotes);
  * `printQuote` function
 ***/
 
+// Function callss the random number generator function and prints a quote and source to the web page.
 function printQuote () {
     let randQuote = getRandomQuote(quotes);
     let quoteHTML = ''; 
     quoteHTML += `<p class="quote">${randQuote.quote}</p>
     <p class="source">${randQuote.source}`;
-    //**For testing** console.log(quoteHTML);
-    //**For testing** console.log(sourceHTML);
+    // Conditionals check if additional properties are present. If so, they are printed to the web page.
     if ( randQuote.citation ) {
         quoteHTML += `<span class="citation">${randQuote.citation}</span>`;
     } 
@@ -80,7 +79,7 @@ function printQuote () {
         quoteHTML += `<span class="year">${randQuote.year}</span>`;
     }
     if ( randQuote.tag ) {
-        quoteHTML += `<span class="tag"> ${randQuote.tag}</span>`;
+        quoteHTML += `<span class="tag"><br>${randQuote.tag}</span>`;
     }
     quoteHTML += `</p>`;
     return document.getElementById('quote-box').innerHTML = quoteHTML;
@@ -90,6 +89,15 @@ function printQuote () {
  * `changeBkgdColor` function
 ***/
 
+/***
+ *  `refreshPage` function
+ ***/
+// This function refreshes the page ever 15 seconds with a new quote
+ function refreshPage() {
+    window.setInterval(printQuote, 15000);
+}
+
+refreshPage();
 
 
 /***
